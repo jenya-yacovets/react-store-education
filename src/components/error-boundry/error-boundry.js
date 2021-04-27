@@ -10,11 +10,11 @@ export default class ErrorBoundry extends Component {
     // элемент жизненого цикла компонента
     // вызывается когда в компоненте ниже по иерархии возникнет ошибка и в нем не будет componentDidCatch
     componentDidCatch() {
-        this.setState({hasError: true})
+        this.setState({ hasError: true })
     }
 
     render() {
-        if(this.state.hasError) {
+        if (this.state.hasError) {
             return <ErrorIndicator />
         } else {
             // если ошибки нет, то отрисуем дочерние компоненты

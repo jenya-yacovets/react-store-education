@@ -1,15 +1,25 @@
-import {createStore} from 'redux'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 
-const reducer = (state = 0, action) => {
+import App from './components/app'
+import ErrorBoundry from './components/error-boundry'
+import BookStoreService from './services/bookstore-service'
+import { BookStoreServiceProvider } from './components/book-store-service-context'
+import store from './store'
 
-    switch(action.type){
-        case 'INC':
-            return state + 1;
-        default:
-            return state
-    }
-}
+const bookStoreService = new BookStoreService()
 
-const store = createStore(reducer)
-
-console.log(Math.floor(Math.random()*10))
+ReactDOM.render(
+    <Provider store={store} >
+        <ErrorBoundry>
+            <BookStoreServiceProvider value={bookStoreService} >
+                <Router>
+                    <App />
+                </Router>
+            </BookStoreServiceProvider>
+        </ErrorBoundry>
+    </Provider>,
+    document.getElementById("root")
+)
