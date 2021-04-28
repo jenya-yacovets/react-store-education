@@ -7,7 +7,7 @@ export default class BookStoreService {
                 author: "Gerbert Shild",
             },
             {
-                id: 1,
+                id: 2,
                 title: "Чистая архитектура",
                 author: "Дядюшка Боб",
             }
