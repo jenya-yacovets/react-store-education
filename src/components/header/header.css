@@ -1,0 +1,23 @@
+.header {
+    border-bottom: solid 1px #e5e5e5;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.header .logo{
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding-left: 1rem;
+    color:rgb(27, 189, 135);
+}
+.header .cart-button{
+    text-decoration: none;
+    font-size: 1.2rem;
+    align-self: center;
+    color:rgb(160, 160, 160);
+}
+.header .cart-button i{
+    font-size: 1.9rem;
+    color:orange;
+}

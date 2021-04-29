@@ -19,15 +19,21 @@ class BookList extends Component {
         const { books } = this.props
 
         return (
-            <ul>
-                {
-                    books.map(book => {
-                        return (
-                            <li key={book.id}><BookListItem book={book} /></li>
-                        )
-                    })
-                }
-            </ul>
+            <div className="row">
+                <div className="col-md-8 offset-md-2">
+                    <div className="book-list">
+                        <ul>
+                            {
+                                books.map(book => {
+                                    return (
+                                        <li key={book.id}><BookListItem book={book} /></li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

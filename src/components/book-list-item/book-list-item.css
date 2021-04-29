@@ -1,0 +1,23 @@
+.book-list-item {
+    display: flex;
+    margin: 20px 0;
+}
+.book-list-item .book-cover {
+    flex-shrink: 0;
+    width: 200px;
+    margin-right: 15px;
+}
+.book-list-item .book-cover img {
+    max-width: 100%;
+}
+.book-list-item .boox-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    align-items: flex-start;
+}
+.book-list-item .boox-details h3 {
+    font-size: 1.7rem;
+}
