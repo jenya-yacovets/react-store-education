@@ -4,26 +4,16 @@ import { connect } from 'react-redux'
 import './book-list.css'
 import BookListItem from '../book-list-item'
 import { withBookStoreService } from '../hoc'
-import { booksLoaded, booksRequested, booksReqError } from '../../actions'
+import { fetchBooks } from '../../actions'
 import { compose } from '../../utils'
 import Spinner from '../spinner'
 import ErrorIndicator from '../error-indicator'
 
 class BookList extends Component {
 
-    async componentDidMount() {
-        const { bookStoreService, booksLoaded, booksReqError } = this.props
-        try {
-            const data = await bookStoreService.getBooks()
-            booksLoaded(data)
-        } catch (error) {
-            booksReqError(error)
-        }
-    }
-
-    componentWillUnmount() {
-        const { booksRequested } = this.props
-        booksRequested()
+    componentDidMount() {
+        const { fetchBooks } = this.props
+        fetchBooks()
     }
 
     render() {
@@ -56,7 +46,13 @@ const mapStateProps = ({ books, loading, error }) => {
     return { books, loading, error }
 }
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        fetchBooks: fetchBooks(ownProps.bookStoreService, dispatch)
+    }
+}
+
 export default compose(
     withBookStoreService(),
-    connect(mapStateProps, { booksLoaded, booksRequested, booksReqError })
+    connect(mapStateProps, mapDispatchToProps)
 )(BookList)
