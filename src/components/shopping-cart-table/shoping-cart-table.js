@@ -25,8 +25,8 @@ const ShopingCartTable = () => {
                         <th>35$</th>
                         <th>70$</th>
                         <th>
-                            <button className="btn btn-sm btn-warning"><i className="bi bi-plus-circle"></i></button>
-                            <button className="btn btn-sm btn-success"><i className="bi bi-dash-circle"></i></button>
+                            <button className="btn btn-sm btn-success"><i className="bi bi-plus-circle"></i></button>
+                            <button className="btn btn-sm btn-warning"><i className="bi bi-dash-circle"></i></button>
                             <button className="btn btn-sm btn-danger"><i className="bi bi-trash"></i></button>
                         </th>
                     </tr>

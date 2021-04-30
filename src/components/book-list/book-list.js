@@ -4,45 +4,59 @@ import { connect } from 'react-redux'
 import './book-list.css'
 import BookListItem from '../book-list-item'
 import { withBookStoreService } from '../hoc'
-import { booksLoaded } from '../../actions'
+import { booksLoaded, booksRequested, booksReqError } from '../../actions'
 import { compose } from '../../utils'
+import Spinner from '../spinner'
+import ErrorIndicator from '../error-indicator'
 
 class BookList extends Component {
 
-    componentDidMount() {
-        const { bookStoreService, booksLoaded } = this.props
-        const data = bookStoreService.getBooks()
-        booksLoaded(data)
+    async componentDidMount() {
+        const { bookStoreService, booksLoaded, booksReqError } = this.props
+        try {
+            const data = await bookStoreService.getBooks()
+            booksLoaded(data)
+        } catch (error) {
+            booksReqError(error)
+        }
+    }
+
+    componentWillUnmount() {
+        const { booksRequested } = this.props
+        booksRequested()
     }
 
     render() {
-        const { books } = this.props
+        const { books, loading, error } = this.props
+
+        if (error) {
+            return <ErrorIndicator />
+        }
+        if (loading) {
+            return <Spinner />
+        }
 
         return (
-            <div className="row">
-                <div className="col-md-8 offset-md-2">
-                    <div className="book-list">
-                        <ul>
-                            {
-                                books.map(book => {
-                                    return (
-                                        <li key={book.id}><BookListItem book={book} /></li>
-                                    )
-                                })
-                            }
-                        </ul>
-                    </div>
-                </div>
+            <div className="book-list">
+                <ul>
+                    {
+                        books.map(book => {
+                            return (
+                                <li key={book.id}><BookListItem book={book} /></li>
+                            )
+                        })
+                    }
+                </ul>
             </div>
         )
     }
 }
 
-const mapStateProps = ({ books }) => {
-    return { books }
+const mapStateProps = ({ books, loading, error }) => {
+    return { books, loading, error }
 }
 
 export default compose(
     withBookStoreService(),
-    connect(mapStateProps, { booksLoaded })
+    connect(mapStateProps, { booksLoaded, booksRequested, booksReqError })
 )(BookList)

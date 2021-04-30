@@ -6,7 +6,20 @@ const booksLoaded = (newBooks) => {
         payload: newBooks
     }
 }
+const booksRequested = () => {
+    return {
+        type: actionsTypes.BOOKS_REQUESTED
+    }
+}
+const booksReqError = (error) => {
+    return {
+        type: actionsTypes.BOOKS_REQ_ERROR,
+        payload: error
+    }
+}
 
 export {
-    booksLoaded
+    booksLoaded,
+    booksRequested,
+    booksReqError
 }

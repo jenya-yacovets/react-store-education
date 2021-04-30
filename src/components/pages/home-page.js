@@ -5,9 +5,11 @@ import ShopingCartTable from '../shopping-cart-table'
 
 const HomePage = () => {
     return (
-        <div>
-            <BookList />
-            <ShopingCartTable />
+        <div className="row">
+            <div className="col-md-8 offset-md-2">
+                <BookList />
+                <ShopingCartTable />
+            </div>
         </div>
     )
 }

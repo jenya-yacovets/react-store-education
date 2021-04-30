@@ -14,7 +14,7 @@ const BookListItem = ({ book: { title, author, price, coverImage } }) => {
                     <h6>Author: <b>{author}</b></h6>
                     <h6>Price: <b>{price}$</b></h6>
                 </div>
-                <a href="/" className="btn btn-primary">Add to cart</a>
+                <button href="/" className="btn btn-primary">Add to cart</button>
             </div>
         </div>
     )
