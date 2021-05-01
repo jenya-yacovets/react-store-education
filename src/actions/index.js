@@ -26,10 +26,34 @@ const fetchBooks = (bookStoreService, dispatch) => async () => {
         dispatch(booksReqError(error))
     }
 }
+const bookAddToCart = (bookId) => {
+    return {
+        type: actionsTypes.BOOK_ADD_TO_CART,
+        payload: bookId
+    }
+}
+
+const bookDeleteFromCart = (itemId) => {
+    return {
+        type: actionsTypes.BOOK_DELETE_FROM_CART,
+        payload: itemId
+    }
+}
+
+const allBookDeleteFromCart = (itemId) => {
+    return {
+        type: actionsTypes.ALL_BOOK_DELETE_FROM_CART,
+        payload: itemId
+    }
+}
+
 
 export {
     booksLoaded,
     booksRequested,
     booksReqError,
-    fetchBooks
+    fetchBooks,
+    bookAddToCart,
+    bookDeleteFromCart,
+    allBookDeleteFromCart
 }
