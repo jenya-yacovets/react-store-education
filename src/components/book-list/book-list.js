@@ -9,7 +9,7 @@ import { compose } from '../../utils'
 import Spinner from '../spinner'
 import ErrorIndicator from '../error-indicator'
 
-const BookList = ({ books, onAddToCart, onInc }) => {
+const BookList = ({ books, onAddToCart }) => {
     return (
         <div className="book-list">
             <ul>
@@ -46,7 +46,7 @@ class BookListContainer extends Component {
     }
 }
 
-const mapStateToProps = ({ books, loading, error }) => {
+const mapStateToProps = ({ bookList: { books, loading, error } }) => {
     return { books, loading, error }
 }
 

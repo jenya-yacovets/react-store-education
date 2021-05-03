@@ -45,10 +45,10 @@ const ShopingCartTable = ({ items, totalPrice, onInc, onDec, onDel }) => {
     )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ shopingCart: { cartItems, orderTotal } }) => {
     return {
-        items: state.cartItems,
-        totalPrice: state.orderTotal
+        items: cartItems,
+        totalPrice: orderTotal
     }
 }
 const mapDispatchToProps = {
